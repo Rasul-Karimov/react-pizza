@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 function App() {
-  const [pizzas, setPizzas] = useState([]);
   useEffect(function () {
     axios.get("http://localhost:3000/db.json").then(({ data }) => {
       setPizzas(data.pizzas);

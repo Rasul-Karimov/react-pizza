@@ -4,7 +4,7 @@ function SortPopup({ items }) {
   const [popup, setPopup] = useState(false);
   const sortRef = useRef();
   const [activeItem, setActiveItem] = useState(0);
-  const activeLabel = items[activeItem];
+  const activeLabel = items[activeItem].name;
   useEffect(function () {
     window.addEventListener("click", function (e) {
       if (!e.path.includes(sortRef.current)) {
@@ -42,14 +42,14 @@ function SortPopup({ items }) {
         <div className="sort__popup">
           <ul>
             {items &&
-              items.map((item, index) => {
+              items.map((obj, index) => {
                 return (
                   <li
-                    key={item}
+                    key={obj}
                     onClick={() => onSelectItem(index)}
                     className={`${activeItem === index && "active"} `}
                   >
-                    {item}
+                    {obj.name}
                   </li>
                 );
               })}

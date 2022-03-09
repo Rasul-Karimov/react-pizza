@@ -4,7 +4,6 @@ import PizzaBlock from "../components/PizzaBlock";
 import SortPopup from "../components/SortPopup";
 
 const Home = ({ items }) => {
-  console.log(items);
   return (
     <div className="container">
       <div className="content__top">
@@ -12,7 +11,13 @@ const Home = ({ items }) => {
           onClick={(name) => console.log(name)}
           items={["Мясные", "Вегетарианские", "Гриль", "Острые", "Закрытые"]}
         />
-        <SortPopup items={["популярности", "цене", "алфавиты"]} />
+        <SortPopup
+          items={[
+            { name: "популярности", type: "popular" },
+            { name: "цене", type: "price" },
+            { name: "алфавит", type: "alphabet" },
+          ]}
+        />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

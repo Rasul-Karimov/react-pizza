@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import PropTypes from "prop-types";
 
 import classNames from "classnames";
 function PizzaBlock({ item }) {
@@ -9,7 +8,6 @@ function PizzaBlock({ item }) {
 
   const [activeSize, setaActiveSize] = useState(item.sizes[0]);
   const [activeType, setActiveType] = useState(item.types[0]);
-  console.log(item.sizes);
   function handleTypes(index) {
     setActiveType(index);
   }
@@ -80,9 +78,5 @@ function PizzaBlock({ item }) {
     </div>
   );
 }
-
-PizzaBlock.propTypes = {
-  name: PropTypes.string.isRequired,
-};
 
 export default PizzaBlock;
