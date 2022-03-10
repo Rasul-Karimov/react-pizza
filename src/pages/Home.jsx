@@ -1,14 +1,27 @@
 import React from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 import Categories from "../components/Categories";
 import PizzaBlock from "../components/PizzaBlock";
 import SortPopup from "../components/SortPopup";
+import { setPizzas } from "../redux/action/pizzas";
+import { setCategory } from "../redux/action/filters";
+const Home = () => {
+  const dispatch = useDispatch();
+  const items = useSelector((state) => {
+    return state.pizzas.items;
+  });
 
-const Home = ({ items }) => {
+  function onSelectItem(index) {
+    dispatch(setCategory(index));
+  }
+
   return (
     <div className="container">
       <div className="content__top">
         <Categories
-          onClick={(name) => console.log(name)}
+          onClick={onSelectItem}
           items={["Мясные", "Вегетарианские", "Гриль", "Острые", "Закрытые"]}
         />
         <SortPopup
