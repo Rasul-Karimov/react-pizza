@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { setSortBy } from "../redux/action/filters";
 function SortPopup({ items }) {
   const [popup, setPopup] = useState(false);
   const sortRef = useRef();
@@ -13,11 +15,15 @@ function SortPopup({ items }) {
     });
   }, []);
 
+  const dispatch = useDispatch();
+
   function handleClickPopup() {
     setPopup(!popup);
   }
+
   const onSelectItem = (index) => {
     setActiveItem(index);
+    dispatch(setSortBy(items[index].type));
     setPopup(false);
   };
   return (

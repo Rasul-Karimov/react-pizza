@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 function Categories({ items, onClick }) {
   const [activeItem, setActiveItem] = useState(null);
 
