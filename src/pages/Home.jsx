@@ -23,12 +23,10 @@ const Home = () => {
 
   useEffect(
     function () {
-      console.log("pizzas");
-      dispatch(fetchPizzas());
+      dispatch(fetchPizzas(sortBy, category));
     },
-    [category]
+    [category, sortBy]
   );
-
   function onSelectItem(index) {
     dispatch(setCategory(index));
   }
@@ -42,9 +40,9 @@ const Home = () => {
         />
         <SortPopup
           items={[
-            { name: "популярности", type: "popular" },
-            { name: "цене", type: "price" },
-            { name: "алфавит", type: "alphabet" },
+            { name: "популярности", type: "popular", order: "desc" },
+            { name: "цене", type: "price", order: "desc" },
+            { name: "алфавит", type: "name", order: "asc" },
           ]}
         />
       </div>

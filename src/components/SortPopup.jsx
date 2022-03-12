@@ -23,7 +23,7 @@ function SortPopup({ items }) {
 
   const onSelectItem = (index) => {
     setActiveItem(index);
-    dispatch(setSortBy(items[index].type));
+    dispatch(setSortBy(items[index]));
     setPopup(false);
   };
   return (

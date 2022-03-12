@@ -1,6 +1,9 @@
-export const setSortBy = (name) => ({
+export const setSortBy = (action) => ({
   type: "SET_SORT_BY",
-  payload: name,
+  payload: {
+    type: action.type,
+    order: action.order,
+  },
 });
 
 export const setCategory = (cartIndex) => ({
