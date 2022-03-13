@@ -2,10 +2,11 @@ import React from "react";
 import { useState } from "react";
 
 import classNames from "classnames";
-function PizzaBlock({ item }) {
-  const types = ["тонкие", "традиционные"];
+import Button from "../Button";
+function PizzaBlock({ item, onClickAddPizza }) {
+  const types = ["тонкое", "традиционные"];
   const sizes = [26, 30, 40];
-
+  const { price, name, imageUrl, id } = item;
   const [activeSize, setaActiveSize] = useState(item.sizes[0]);
   const [activeType, setActiveType] = useState(item.types[0]);
   function handleTypes(index) {
@@ -14,6 +15,18 @@ function PizzaBlock({ item }) {
 
   function handleSizes(index) {
     setaActiveSize(index);
+  }
+
+  function onAddPizza() {
+    const obj = {
+      id,
+      price,
+      name,
+      imageUrl,
+      size: activeSize,
+      type: types[activeType],
+    };
+    onClickAddPizza(obj);
   }
 
   return (
@@ -58,7 +71,7 @@ function PizzaBlock({ item }) {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price"> от {item.price} ₽</div>
-        <div className="button button--outline button--add">
+        <Button onClickAddPizza={onAddPizza} className="button--add" outline>
           <svg
             width="12"
             height="12"
@@ -73,7 +86,7 @@ function PizzaBlock({ item }) {
           </svg>
           <span>Добавить</span>
           <i>2</i>
-        </div>
+        </Button>
       </div>
     </div>
   );
